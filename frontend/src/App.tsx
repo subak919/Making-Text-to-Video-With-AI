@@ -6,6 +6,9 @@ function App() {
   const [loadingMessage, setLoadingMessage] = useState('');
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
 
+  // 환경 변수로 API URL 설정
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:29847';
+
   async function handleSubmit(ev: FormEvent) {
     ev.preventDefault();
     setLoadingMessage('Generating assets...');
@@ -14,7 +17,7 @@ function App() {
     try {
       // 1단계: /create-story 요청
       const assetsResponse = await axios.get(
-        `http://localhost:29847/create-story?url=${encodeURIComponent(url)}`,
+        `${API_URL}/create-story?url=${encodeURIComponent(url)}`, // 수정된 부분: API_URL 사용
       );
 
       const id = assetsResponse.data.dir; // 'dir' 값을 받아옵니다.
@@ -24,7 +27,7 @@ function App() {
 
       // 2단계: /build_video 요청
       const videoResponse = await axios.get(
-        `http://localhost:29847/build_video?id=${encodeURIComponent(id)}`,
+        `${API_URL}/build_video?id=${encodeURIComponent(id)}`, // 수정된 부분: API_URL 사용
       );
 
       setVideoUrl(videoResponse.data.video);
@@ -81,7 +84,7 @@ function App() {
             /* eslint-disable-next-line jsx-a11y/media-has-caption */
             <video
               className="bg-gray-200 w-[360px] h-[300px]"
-              src={`http://localhost:29847/${videoUrl}`}
+              src={`${API_URL}/${videoUrl}`} // 수정된 부분: API_URL 사용
               controls
               autoPlay
             />

@@ -12,7 +12,14 @@ import ffprobePath from "ffprobe-static";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://your-vercel-frontend.vercel.app",
+    ], // 수정된 부분: 프론트엔드 URL 추가
+  })
+);
 app.use(express.static("stories"));
 
 // ffmpeg 및 ffprobe 경로 설정
@@ -20,6 +27,8 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath.path);
 
 console.log("Loaded Hugging Face API Key:", process.env.HUGGINGFACE_API_KEY);
+
+const PORT = process.env.PORT || 29847; // 수정된 부분: 포트를 환경 변수로 설정
 
 // 이미지 생성 함수
 const generateImageHF = async (prompt, outputPath) => {
@@ -193,4 +202,4 @@ app.get("/build_video", async (req, res) => {
 });
 
 // 서버 시작
-app.listen(29847, () => console.log("Listening on port 29847"));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`)); // 수정된 부분: 환경 변수 포트 사용
