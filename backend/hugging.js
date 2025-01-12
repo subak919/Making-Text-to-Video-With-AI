@@ -16,7 +16,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://your-vercel-frontend.vercel.app",
+      https://making-text-to-video-with-5ynsdeejz-sooyeons-projects.vercel.app,
     ], // 수정된 부분: 프론트엔드 URL 추가
   })
 );
