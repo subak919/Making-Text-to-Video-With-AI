@@ -18,6 +18,8 @@ app.use(
       "http://localhost:3000",
       https://making-text-to-video-with-5ynsdeejz-sooyeons-projects.vercel.app,
     ], // 수정된 부분: 프론트엔드 URL 추가
+    methods: ["GET", "POST"], // 허용할 HTTP 메서드
+    credentials: true, // 쿠키 전달을 허용하려면 true로 설정
   })
 );
 app.use(express.static("stories"));
