@@ -202,4 +202,4 @@ app.get("/build_video", async (req, res) => {
 });
 
 // 서버 시작
-app.listen(PORT, () => console.log(`Listening on port ${PORT}`)); // 수정된 부분: 환경 변수 포트 사용
+//app.listen(PORT, () => console.log(`Listening on port ${PORT}`)); // 수정된 부분: 환경 변수 포트 사용
