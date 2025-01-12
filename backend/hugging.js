@@ -15,9 +15,9 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
-      https://making-text-to-video-with-5ynsdeejz-sooyeons-projects.vercel.app,
-    ], // 수정된 부분: 프론트엔드 URL 추가
+      "https://making-text-to-video-with-ai.vercel.app", // 프론트엔드 URL 추가
+      "http://localhost:3000", // 로컬 개발 환경 지원 (선택 사항)
+    ],
     methods: ["GET", "POST"], // 허용할 HTTP 메서드
     credentials: true, // 쿠키 전달을 허용하려면 true로 설정
   })
